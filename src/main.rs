@@ -1,22 +1,30 @@
 #[macro_use] extern crate nickel;
 
-use crate::nickel::extensions::Referer;
-use crate::nickel::QueryString;
 use nickel::Nickel;
-use nickel::hyper::header;
+use nickel::status::StatusCode;
+use nickel::hyper::header::{Host, Location};
 
+mod wikipedia;
 
 fn main() {
     let mut server = Nickel::new();
 
     server.utilize(router! {
-        get "**" => |req, _res| {
-          let headers = &req.origin.headers;
-          let hostname = &headers.get::<header::Host>().unwrap().hostname;
-          println!("{}", hostname);
-          "Hello world!"
+        get "**" => |req, mut res| {
+            let headers = &req.origin.headers;
+            let hostname = &headers.get::<Host>().unwrap().hostname;
+
+            let page_name = hostname.split(".").next().unwrap();
+
+            let target_site = wikipedia::search_page_url(page_name).unwrap();
+
+            res.set(StatusCode::PermanentRedirect)
+               .set(Location(target_site.into()));
+
+            ""
         }
     });
 
-    server.listen("127.0.0.1:80");
+    // This way if the port can't bind the application will panic instead of silently erroring.
+    server.listen("127.0.0.1:80").unwrap();
 }
