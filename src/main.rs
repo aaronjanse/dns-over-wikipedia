@@ -18,7 +18,7 @@ fn main() {
 
             let target_site = wikipedia::search_page_url(page_name).unwrap();
 
-            res.set(StatusCode::TemporaryRedirect)
+            res.set(StatusCode::PermanentRedirect)
                .set(Location(target_site.into()));
 
             ""
