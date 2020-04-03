@@ -14,10 +14,4 @@
     "*://*.idk/*", "https://en.wikipedia.org/*"
   ],
   "homepage_url": "https://github.com/aaronjanse/dns-over-wikipedia",
-
-  "applications": {
-    "gecko": {
-      "strict_min_version": "55.0a1"
-    }
-  }
 }
