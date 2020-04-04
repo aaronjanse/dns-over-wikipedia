@@ -1,8 +1,13 @@
 # DNS over Wikipedia
 
-Wikipedia keeps track of official URLs for popular websites. DNS over Wikipedia locally resolves domains ending with `.idk` using the URL listed on a topic's Wikipedia page. 
+Wikipedia keeps track of official URLs for popular websites. With DNS over Wikipedia installed, domains ending with `.idk` are resolved by searching Wikipedia and extracting the relevant URL from the infobox.
 
-> Instead of googling for the site, I google for the site's Wikipedia article ("schihub wiki") which usually has an up-to-date link to the site in the sidebar, whereas Google is forced to censor their results.  
+Example:
+1. Type `scihub.idk/` in browser address bar
+2. Observe redirect to `https://sci-hub.tw` (at the time of writing) 
+
+> Instead of googling for the site, I google for the site's Wikipedia article ("schihub wiki") which usually has an up-to-date link to the site in the sidebar, whereas Google is forced to censor their results. 
+>   
 > If you Google "Piratebay", the first search result is a fake "thepirate-bay.org" (with a dash) but the Wikipedia article lists the right one.
 > — [shpx](https://news.ycombinator.com/item?id=22414031)
 
