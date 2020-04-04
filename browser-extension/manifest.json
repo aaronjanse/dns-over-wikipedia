@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "DNS over Wikipedia",
+  "version": "0.0.1",
+  "description": "Resolve .idk domains using the URL provided by the Wikipedia page for a given topic. Try `scihub.idk`.",
+  "homepage_url": "https://github.com/aaronjanse/dns-over-wikipedia",
+  "browser_action": {
+    "browser_style": false
+  },
+  "background": {
+    "scripts": ["common.js"]
+  },
+  "permissions": [
+    "webRequest", "webRequestBlocking",
+    "*://*.idk/*", "https://en.wikipedia.org/*"
+  ]
+}
