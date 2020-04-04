@@ -1,5 +1,7 @@
 # DNS over Wikipedia
 
+![Demo](./demo.gif)
+
 Wikipedia keeps track of official URLs for popular websites. With DNS over Wikipedia installed, domains ending with `.idk` are resolved by searching Wikipedia and extracting the relevant URL from the infobox.
 
 Example:
