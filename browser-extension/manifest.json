@@ -4,9 +4,7 @@
   "version": "0.0.2",
   "description": "Resolve .idk domains using the URL provided by the Wikipedia page for a given topic",
   "homepage_url": "https://github.com/aaronjanse/dns-over-wikipedia",
-  "browser_action": {
-    "browser_style": false
-  },
+
   "background": {
     "scripts": ["common.js"]
   },
