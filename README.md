@@ -1,6 +1,6 @@
 # DNS over Wikipedia
 
-Wikipedia keeps track of official URLs for popular websites. With DNS over Wikipedia installed, domains ending with `.idk` are resolved by searching Wikipedia and extracting the relevant URL from the infobox.
+Wikipedia keeps track of official URLs for popular websites. With DNS over Wikipedia installed, domains ending with `.idk` are redirected by searching Wikipedia and extracting the relevant URL from the infobox.
 
 Example:
 1. Type `scihub.idk/` in browser address bar
