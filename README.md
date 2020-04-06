@@ -13,7 +13,12 @@ Example:
 > If you Google "Piratebay", the first search result is a fake "thepirate-bay.org" (with a dash) but the Wikipedia article lists the right one.
 > — [shpx](https://news.ycombinator.com/item?id=22414031)
 
-## Installation Instructions
+## Installation Options
+
+#### [Chrome Extension](https://chrome.google.com/webstore/detail/mjmjpfncapfopnommmngnmjalkopljji/publish-accepted?authuser=0&hl=en)
+
+#### [Firefox Extension](https://addons.mozilla.org/en-US/firefox/addon/dns-over-wikipedia/)
+
 Required dependencies:
 
  - dnsmasq
