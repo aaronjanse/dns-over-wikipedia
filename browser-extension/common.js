@@ -15,10 +15,12 @@ function redirect(requestDetails) {
   var wikiUrl = Object.values(apiData.query.pages)[0].fullurl;
   var html = request(wikiUrl);
   var doc = new DOMParser().parseFromString(html, "text/html");
-  var wikiUrlRow = doc.querySelector('table.infobox tbody tr td.url');
+  var infoboxRows = doc.querySelectorAll('table.infobox tbody tr');
+  infoboxRows = Array.from(infoboxRows);
+  var wikiUrlRow = infoboxRows.filter(x => x.innerText.match(/(?:URL)|(?:Website)/));
 
   if (wikiUrlRow) {
-    return {redirectUrl: wikiUrlRow.querySelector('a').href};
+    return {redirectUrl: wikiUrlRow[0].querySelector('a').href};
   } else {
     return {redirectUrl: wikiUrl};
   }
