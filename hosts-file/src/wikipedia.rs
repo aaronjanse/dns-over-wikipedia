@@ -26,12 +26,18 @@ pub fn search_page_url(name: &str) -> Result<String, Box<dyn Error>> {
 }
 
 pub fn extract_url(wikipedia_page_content: &str) -> Result<String, String> {
-    let select_urls = Selector::parse("table.infobox tbody tr td.url").unwrap();
+    let select_urls = Selector::parse("table.infobox tbody tr").unwrap();
     let select_link = Selector::parse("a").unwrap();
 
     let document = Html::parse_document(&wikipedia_page_content);
 
-    let urls = document.select(&select_urls).next().ok_or("couldn't find url in infobox")?;
-    let link = urls.select(&select_link).next().ok_or("couldn't find link within infobox url entry")?;
+    let rows = document.select(&select_urls);
+    let urls = rows.filter(|x| {
+        let text = x.text().collect::<Vec<_>>();
+        text.contains(&"URL") || text.contains(&"Website")
+    }).next().ok_or("couldn't find url in infobox")?;
+
+    let link = urls.select(&select_link).next()
+                   .ok_or("couldn't find link within infobox url entry")?;
     Ok(link.value().attr("href").ok_or("could not find href")?.to_string())
 }
