@@ -15,7 +15,7 @@ Example:
 
 ## Installation Options
 
-#### [Chrome Extension](https://chrome.google.com/webstore/detail/mjmjpfncapfopnommmngnmjalkopljji/publish-accepted?authuser=0&hl=en)
+#### [Chrome Extension](https://chrome.google.com/webstore/detail/mjmjpfncapfopnommmngnmjalkopljji/)
 
 #### [Firefox Extension](https://addons.mozilla.org/en-US/firefox/addon/dns-over-wikipedia/)
 
