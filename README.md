@@ -19,4 +19,4 @@ Example:
 
 #### [Firefox Extension](https://addons.mozilla.org/en-US/firefox/addon/dns-over-wikipedia/)
 
-#### [(optional) Rust DNS Resolver Script](./hosts-file)
+#### [(optional) Rust Redirect Script](./hosts-file)
