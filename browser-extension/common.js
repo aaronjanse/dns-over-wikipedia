@@ -19,7 +19,7 @@ function redirect(requestDetails) {
   infoboxRows = Array.from(infoboxRows);
   var wikiUrlRow = infoboxRows.filter(x => x.innerText.match(/(?:URL)|(?:Website)/));
 
-  if (wikiUrlRow) {
+  if (wikiUrlRow[0]) {
     return {redirectUrl: wikiUrlRow[0].querySelector('a').href};
   } else {
     return {redirectUrl: wikiUrl};
