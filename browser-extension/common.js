@@ -7,10 +7,7 @@ function request(url) {
   return x.responseText
 } 
 
-function redirect(requestDetails) {
-  var hostname = new URL(requestDetails.url).hostname
-  var searchQuery = hostname.replace(/\.idk$/, '');
-
+function redirect(searchQuery) {
   var apiData = JSON.parse(request(apiPrefix+searchQuery));
   var wikiUrl = Object.values(apiData.query.pages)[0].fullurl;
   var html = request(wikiUrl);
@@ -20,9 +17,9 @@ function redirect(requestDetails) {
   var wikiUrlRow = infoboxRows.filter(x => x.innerText.match(/(?:URL)|(?:Website)/));
 
   if (wikiUrlRow[0]) {
-    return {redirectUrl: wikiUrlRow[0].querySelector('a').href};
+    return wikiUrlRow[0].querySelector('a').href;
   } else {
-    return {redirectUrl: wikiUrl};
+    return wikiUrl;
   }
 }
 
@@ -34,7 +31,17 @@ if (typeof chrome !== 'undefined') {
 }
 
 root.webRequest.onBeforeRequest.addListener(
-  redirect,
+  (requestDetails) => {
+    var hostname = new URL(requestDetails.url).hostname
+    var searchQuery = hostname.replace(/\.idk$/, '');
+    return {redirectUrl: redirect(searchQuery)};
+  },
   {urls: ["*://*.idk/*"]},
   ["blocking"]
 );
+
+if (typeof chrome !== 'undefined') {
+  chrome.omnibox.onInputEntered.addListener(function(text) {
+    chrome.tabs.update({ url: redirect(text) });
+  });
+}
