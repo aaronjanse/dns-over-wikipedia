@@ -17,8 +17,8 @@ function redirect(searchQuery) {
   var wikiUrlRow = infoboxRows.filter(x => x.innerText.match(/(?:URL)|(?:Website)/));
 
   if (wikiUrlRow[0]) {
-    for (var i in wikiUrlRow) {
-      var a = wikiUrlRow[i].querySelector('a');
+    for (let i in wikiUrlRow) {
+      let a = wikiUrlRow[i].querySelector('a');
       if (a) {
         return a.href;
       }
